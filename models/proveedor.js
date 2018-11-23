@@ -10,7 +10,9 @@ var ProveedorSchema = Schema({
 	email:String,
 	direccion:String,
 	descripcion:String,
-	imagen:String
+	imagen:String,
+	user: {type: Schema.ObjectId, ref:'User'}
+
 });
 
 module.exports = mongoose.model('Proveedor',ProveedorSchema);

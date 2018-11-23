@@ -8,6 +8,7 @@ var app = express();
 //cargar rutas
 var user_routes= require('./routes/user_routes');
 var proveedor_routes= require('./routes/proveedor_routes');
+var producto_routes= require('./routes/producto_routes');
 // var comentario_routes= require('./routes/comentario_routes');
 // var upload_routes= require('./routes/upload_routes');
 // var imagenes_routes= require('./routes/imagen_routes');
@@ -30,6 +31,7 @@ app.use((req,res,next) => {
 // rutas bases;
 app.use('/api',user_routes);
 app.use('/api',proveedor_routes);
+app.use('/api',producto_routes);
 // app.use('/api',upload_routes);
 // app.use('/api',comentario_routes);
 // app.use('/api',imagenes_routes);

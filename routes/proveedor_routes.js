@@ -13,9 +13,10 @@ var md_upload = multipart({uploadDir:'./uploads/proveedor'});
 
 api.post('/proveedor',md_auth.ensureAuth,proveedorController.saveProveedor);
 api.get('/proveedor/:id?',md_auth.ensureAuth,proveedorController.getProveedor);
-api.get('/proveedores',proveedorController.getProveedores);
+api.get('/proveedores/:user?',proveedorController.getProveedoresxUsuario);
 api.put('/proveedor/:id?',md_auth.ensureAuth,proveedorController.updateProveedor);
 api.delete('/proveedor/:id?',md_auth.ensureAuth,proveedorController.deleteProveedor);
+
 api.post('/upload-img-proveedor/:id', [md_auth.ensureAuth, md_upload],
  proveedorController.uploadImage);
 api.get('/get-img-proveedor/:imageFile', proveedorController.getImageFile);

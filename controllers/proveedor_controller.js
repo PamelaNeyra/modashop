@@ -18,9 +18,10 @@ function saveProveedor(req, res) {
 	proveedor.direccion = params.direccion;
 	proveedor.descripcion = params.descripcion;
 	proveedor.imagen = params.imagen;
+	proveedor.user= params.user;
 
 	if (proveedor.nombre != null && proveedor.descripcion != null && proveedor.tipo != null && proveedor.celular != null && proveedor.email != null
-		&& proveedor.direccion != null && proveedor.imagen != null) {
+		&& proveedor.direccion != null && proveedor.imagen != null && proveedor.user!=null) {
 
 		proveedor.save((err, proveedorStored) => {
 			if (err) {
@@ -55,6 +56,30 @@ function getProveedor(req, res) {
 	}
 	);
 }
+
+function getProveedoresxUsuario(req, res) {
+
+	var usuarioId = req.params.user;
+
+
+	if (usuarioId) {
+		var find = Proveedor.find({ user: usuarioId }).sort('_id');
+	}
+
+	find.populate({ path: 'user' }).exec((err, proveedores) => {
+		if (err) {
+			res.status(500).send({ message: 'Error en la peticion' });
+		} else {
+			if (!proveedores) {
+				res.status(404).send({ message: 'No hay proveedores en la base de datos' });
+			} else {
+				res.status(200).send({ proveedores });
+			}
+		}
+	}
+	);
+}
+
 
 function getProveedores(req,res){
 	
@@ -155,6 +180,7 @@ module.exports = {
 	updateProveedor,
 	deleteProveedor,
 	getProveedores,
+	getProveedoresxUsuario,
 	//para imagenes
 	uploadImage,
 	getImageFile
