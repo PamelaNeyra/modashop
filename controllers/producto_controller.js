@@ -167,12 +167,31 @@ function getImageFile(req, res) {
 }
 
 
+
+function getProductos(req,res){
+	
+	Producto.find({}).sort('_id').exec((err, productos) => {
+	   if(err){
+			   res.status(500).send({ message:'Error en la peticion'});	
+		   }else{
+			   if(!productos){
+					   res.status(404).send({ message:'No hay productos en la base de datos'});	
+			   }else{
+				   res.status(200).send({productos});	
+			   }
+		   }
+	   });
+}
+
+
+
 module.exports = {
 	saveProducto,
 	getProducto,
 	updateProducto,
 	deleteProducto,
 	getProductosxUsuario,
+	getProductos,
 	//para imagenes
 	uploadImage,
 	getImageFile

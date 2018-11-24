@@ -14,6 +14,7 @@ var md_upload = multipart({uploadDir:'./uploads/proveedor'});
 api.post('/proveedor',md_auth.ensureAuth,proveedorController.saveProveedor);
 api.get('/proveedor/:id?',md_auth.ensureAuth,proveedorController.getProveedor);
 api.get('/proveedores/:user?',proveedorController.getProveedoresxUsuario);
+api.get('/getproveedores',proveedorController.getProveedores);
 api.put('/proveedor/:id?',md_auth.ensureAuth,proveedorController.updateProveedor);
 api.delete('/proveedor/:id?',md_auth.ensureAuth,proveedorController.deleteProveedor);
 
