@@ -11,27 +11,19 @@ function saveProducto(req, res) {
 
 	console.log(params);
 	producto.nombre = params.nombre;
-	producto.descripcion = params.descripcion;
-	producto.talla = params.talla;
-	producto.material = params.material;
-	producto.envioInternacional = params.envioInternacional;
 	producto.precioCompra = params.precioCompra;
 	producto.precioVenta = params.precioVenta;
-	producto.cantidad = params.cantidad;
-	producto.descripcion1 = params.descripcion1;
-	producto.descripcion2 = params.descripcion2;
-	producto.descripcion3 = params.descripcion3;
+	producto.stock_minimo = params.stock_minimo;
+	producto.stock_maximo = params.stock_maximo;
+	producto.material = params.material;
+	producto.envioInternacional = params.envioInternacional;
+	producto.descripcion = params.descripcion;
 	producto.imagen = params.imagen;
+	producto.color = params.color;
+	producto.marca = params.marca;
+	producto.cantidad = params.cantidad;
 	producto.user= params.user;
-	producto.proveedor = params.proveedor;
-
-	 if (
-		producto.nombre != null && producto.descripcion != null 
-		&& producto.talla != null && producto.material != null && producto.envioInternacional != null 
-		&& producto.precioCompra != null && producto.precioVenta != null && producto.cantidad != null 
-		&& producto.descripcion1 != null && producto.descripcion2 != null && producto.descripcion3 != null 
-		 && producto.user != null && producto.proveedor != null  
-		) { 
+	producto.proveedor= params.proveedor;
 
 		producto.save((err, productoStored) => {
 			if (err) {
@@ -44,9 +36,6 @@ function saveProducto(req, res) {
 				}
 			}
 		});
-	 } else {
-	 	res.status(400).send({ message: 'Introduce todos los datos' });
-	 }
 }
 
 function getProducto(req, res) {

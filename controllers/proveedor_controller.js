@@ -10,18 +10,17 @@ function saveProveedor(req, res) {
 	var proveedor = new Proveedor();
 	var params = req.body;
 
-	//console.log(params);
 	proveedor.nombre = params.nombre;
-	proveedor.tipo = params.tipo;
-	proveedor.celular = params.celular;
-	proveedor.email = params.email;
+	proveedor.telefono = params.telefono;
 	proveedor.direccion = params.direccion;
+	proveedor.email = params.email;
 	proveedor.descripcion = params.descripcion;
+	proveedor.tipo = params.tipo;
 	proveedor.imagen = params.imagen;
-	proveedor.user= params.user;
+	proveedor.user = params.user;
 
-	if (proveedor.nombre != null && proveedor.descripcion != null && proveedor.tipo != null && proveedor.celular != null && proveedor.email != null
-		&& proveedor.direccion != null && proveedor.imagen != null && proveedor.user!=null) {
+	if (proveedor.nombre != null && proveedor.descripcion != null && proveedor.tipo != null && proveedor.telefono != null
+		 && proveedor.email != null && proveedor.direccion != null && proveedor.imagen != null) {
 
 		proveedor.save((err, proveedorStored) => {
 			if (err) {
@@ -66,7 +65,7 @@ function getProveedoresxUsuario(req, res) {
 		var find = Proveedor.find({ user: usuarioId }).sort('_id');
 	}
 
-	find.populate({ path: 'user' }).exec((err, proveedores) => {
+	find.populate({ path: 'tipo' }).exec((err, proveedores) => {
 		if (err) {
 			res.status(500).send({ message: 'Error en la peticion' });
 		} else {

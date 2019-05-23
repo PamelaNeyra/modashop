@@ -5,19 +5,20 @@ var Schema = mongoose.Schema; // permitira crear objetos de tipo esquema
 
 var ProductoSchema = Schema({
 	nombre:String,
-	descripcion:String,
-	talla:String,
-    material:String,
-	envioInternacional:String,
 	precioCompra:Number,
 	precioVenta:Number,
-    cantidad:Number,
-	descripcion1:String,
-	descripcion2:String,
-	descripcion3:String,
+	stock_minimo:Number,
+	stock_maximo:Number,
+	cantidad:Number,
+    material:String,
+	envioInternacional:String,
+	descripcion:String,
 	imagen:String,
+	color:String,
+	marca:String,
+	estado:{type:String,default:"Activo"},
 	user: {type: Schema.ObjectId, ref:'User'},
-	proveedor: {type: Schema.ObjectId, ref:'Proveedor'}
+	prveedor: {type: Schema.ObjectId, ref:'Proveedor'}
 });
 
 module.exports = mongoose.model('Producto',ProductoSchema);

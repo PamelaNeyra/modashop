@@ -4,18 +4,17 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema; // permitira crear objetos de tipo esquema
 
 var UsuarioSchema = Schema({
+	dni:Number,
 	name:String,
 	surname:String,
-	ciudad:String,
 	direccion:String,
-	celular:String,
-	descripcion:String,
+	ciudad:String,
+	telefono:String,
 	email:String,
 	password:String,
-	facebook:String,
-	twiter:String,
 	role:String,
-	imagen:String
+	imagen:String,
+	estado:{type:String, default:"Activo"}
 });
 
 module.exports = mongoose.model('User',UsuarioSchema);

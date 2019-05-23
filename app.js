@@ -7,11 +7,9 @@ var app = express();
 
 //cargar rutas
 var user_routes= require('./routes/user_routes');
+var tipo_routes= require('./routes/tipo_routes');
 var proveedor_routes= require('./routes/proveedor_routes');
 var producto_routes= require('./routes/producto_routes');
-// var comentario_routes= require('./routes/comentario_routes');
-// var upload_routes= require('./routes/upload_routes');
-// var imagenes_routes= require('./routes/imagen_routes');
 
 //configuracion body-parser
 app.use(bodyParser.urlencoded({extended:false}));
@@ -32,8 +30,5 @@ app.use((req,res,next) => {
 app.use('/api',user_routes);
 app.use('/api',proveedor_routes);
 app.use('/api',producto_routes);
-// app.use('/api',upload_routes);
-// app.use('/api',comentario_routes);
-// app.use('/api',imagenes_routes);
-
+app.use('/api',tipo_routes);
 module.exports = app; // para usar express en otros ficheros que incluyan app

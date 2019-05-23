@@ -7,6 +7,7 @@ var port = process.env.PORT || 3977; // PUERTO QUE TENDRA NUESTRO SERVIDOR WEB  
 
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://junior:junior1@ds115753.mlab.com:15753/sistema-ventas', (err,res)=>{
+//mongoose.createConnection('mongodb://localhost:27017/evaluacionDB', (err,res)=>{
 
 //mongoose.connect('mongodb://localhost:27017/proyectoIhcDB', (err,res)=>{
 	if(err){ 
