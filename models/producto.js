@@ -18,7 +18,7 @@ var ProductoSchema = Schema({
 	marca:String,
 	estado:{type:String,default:"Activo"},
 	user: {type: Schema.ObjectId, ref:'User'},
-	prveedor: {type: Schema.ObjectId, ref:'Proveedor'}
+	proveedor: {type: Schema.ObjectId, ref:'Proveedor'}
 });
 
 module.exports = mongoose.model('Producto',ProductoSchema);
