@@ -12,9 +12,9 @@ var md_upload = multipart({uploadDir:'./uploads/producto'});
 
 
 api.post('/producto',md_auth.ensureAuth,productoController.saveProducto);
-api.get('/producto/:id?',md_auth.ensureAuth,productoController.getProducto);
+api.get('/producto/:id?',productoController.getProducto);
 api.get('/productos/:user?',productoController.getProductosxUsuario);
-api.get('/getproductos/:user?',productoController.getProductos);
+api.get('/getProductos',productoController.getProductos);
 api.put('/producto/:id?',md_auth.ensureAuth,productoController.updateProducto);
 api.delete('/producto/:id?',md_auth.ensureAuth,productoController.deleteProducto);
 

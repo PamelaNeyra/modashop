@@ -18,9 +18,13 @@ function saveProducto(req, res) {
 	producto.material = params.material;
 	producto.envioInternacional = params.envioInternacional;
 	producto.descripcion = params.descripcion;
+	producto.descripcion1 = params.descripcion1;
+	producto.descripcion2 = params.descripcion2;
+	producto.descripcion3 = params.descripcion3;
 	producto.imagen = params.imagen;
 	producto.color = params.color;
 	producto.marca = params.marca;
+	producto.tipo = params.tipo;
 	producto.cantidad = params.cantidad;
 	producto.user= params.user;
 	producto.proveedor= params.proveedor;
