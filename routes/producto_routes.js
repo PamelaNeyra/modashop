@@ -15,7 +15,7 @@ api.post('/producto',md_auth.ensureAuth,productoController.saveProducto);
 api.get('/producto/:id?',productoController.getProducto);
 api.get('/productos/:user?',productoController.getProductosxUsuario);
 api.get('/getProductos',productoController.getProductos);
-api.put('/producto/:id?',md_auth.ensureAuth,productoController.updateProducto);
+api.put('/producto/:id?',productoController.updateProducto);
 api.delete('/producto/:id?',md_auth.ensureAuth,productoController.deleteProducto);
 
 api.post('/upload-img-producto/:id', [md_auth.ensureAuth, md_upload],
