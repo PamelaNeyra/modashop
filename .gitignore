@@ -1,5 +1,5 @@
 node_modules/
 Frontend/
 cdn/
-npm-debug
+npm-debug.log
 package-lock.json
