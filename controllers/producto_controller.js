@@ -25,6 +25,11 @@ function saveProducto(req, res) {
 	producto.color = params.color;
 	producto.marca = params.marca;
 	producto.tipo = params.tipo;
+	producto.idioma = params.idioma;
+	producto.piezas = params.piezas;
+	producto.paginas = params.paginas;
+	producto.editorial = params.editorial;
+	producto.autor = params.autor;
 	producto.cantidad = params.cantidad;
 	producto.user= params.user;
 	producto.proveedor= params.proveedor;

@@ -22,12 +22,14 @@ function saveUser(req,res){
 
 	console.log(params);
 
-	user.name= params.name;
+	user.nombres= params.nombres;
 	user.dni = params.dni;
-	user.surname= params.surname;
+	user.surname= params.apePaterno;
+	user.apeMaterno = params.apeMaterno;
 	user.ciudad= params.ciudad;
 	user.direccion= params.direccion;
 	user.telefono= params.telefono;
+	user.estadoCivil = params.estadoCivil;
 	user.role= params.role;
 	user.email= params.email;
 	user.password= params.password;
@@ -38,7 +40,7 @@ function saveUser(req,res){
 		//encriptamos la contraseña
 		bcrypt.hash(user.password,null,null, function(err,hash){
 			user.password= hash;
-			if(user.dni!=null && user.name!=null && user.surname!=null && user.email!=null  && user.password!=null){
+			if(user.dni!=null && user.name!=null && user.apePaterno!=null && user.email!=null  && user.password!=null){
 				//guarda el usuario
 				user.save((err,userStored)=>{
 					 if(err){
@@ -52,12 +54,12 @@ function saveUser(req,res){
 					 }
 				});
 			}else{
-				res.status(200).send({message:'Rellena todos los campos'});
+				res.status(400).send({message:'Rellena todos los campos'});
 			}
 		});
 
 	}else{
-		res.status(200).send({message:'Introduce la contraseña'});
+		res.status(400).send({message:'Introduce la contraseña'});
 	}
 }
 
@@ -72,7 +74,7 @@ function saveUser(req,res){
 		 		res.status(500).send({message:'Error en la peticion'});
 		 	}else{
 		 		if(!user){
-		 			res.status(404).send({message:'el usuario no existe'});
+		 			res.status(404).send({message:'El usuario no existe'});
 		 		}else{
 
 		 			bcrypt.compare(password,user.password, (err,check)=>{
@@ -83,7 +85,7 @@ function saveUser(req,res){
 		 						res.status(200).send({user});
 		 					}
 		 				}else{
-		 					res.status(404).send({message:'contraseña incorrecta'});
+		 					res.status(400).send({message:'contraseña incorrecta'});
 		 				}
 
 		 			});
